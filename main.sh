@@ -2,7 +2,6 @@
 
 valcritico=90
 valalerta=70
-usuario=$(whoami)
 
 read -p "Qual diretório você gostaria de identificar? " dir
 
@@ -22,10 +21,10 @@ if [ -d "$dir" ]; then
 
     echo "O usuário atual está rodando $quantiaProcessos processos."
     echo -e "\nProcessos que mais utilizam memória:\n"
-    echo "PID | Comando"
-    echo "--------------"
+    echo "Memória | PID | Comando"
+    echo "---------------------------"
  
-    ps aux -u $USER --sort=-%mem --noheaders | head -n 5 | awk '{print $2 " - " $11}' | while read -r line; do
+    ps aux -u $USER --sort=-%mem --noheaders | head -n 5 | awk '{print $4 "% - " $2 " - " $11}' | while read -r line; do
         echo "$line"
     done
 else
