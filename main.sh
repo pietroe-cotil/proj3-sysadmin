@@ -7,7 +7,7 @@ read -p "Qual diretório você gostaria de identificar? " dir
 
 if [ -d "$dir" ]; then
     echo "Diretório encontrado."
-    usoporc=$(df -h / | awk 'NR==2 {print $5}' | sed 's/%//')
+    usoporc=$(df / | awk 'NR==2 {print $5}' | sed 's/%//')
 
     if [ "$usoporc" -gt "$valcritico" ]; then
         echo "[CRÍTICO]: Uso de disco acima de $valcritico%! ($usoporc%)"
