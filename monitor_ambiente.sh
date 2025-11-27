@@ -9,6 +9,10 @@ if [ -d "$dir" ]; then
     echo "Diretório encontrado."
     usoporc=$(df / | awk 'NR==2 {print $5}' | sed 's/%//')
 
+    if !([ -r "$dir" ] && [ -w "$dir" ] && [ -x "$dir" ]); then
+        echo "[AVISO] Usuário não tem permissão total do diretório." 
+    fi
+
     if [ "$usoporc" -gt "$valcritico" ]; then
         echo "[CRÍTICO]: Uso de disco acima de $valcritico%! ($usoporc%)"
     elif [ "$usoporc" -gt "$valalerta" ]; then
