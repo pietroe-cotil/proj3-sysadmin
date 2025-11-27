@@ -26,7 +26,7 @@ if [ -d "$dir" ]; then
     echo "O usuário atual está rodando $quantiaProcessos processos."
     echo -e "\nProcessos que mais utilizam memória:\n"
     echo "Memória | PID | Comando"
-    echo "---------------------------"
+    echo "-----------------------"
  
     ps aux -u $USER --sort=-%mem --noheaders | head -n 5 | awk '{print $4 "% - " $2 " - " $11}' | while read -r line; do
         echo "$line"
