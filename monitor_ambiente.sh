@@ -21,7 +21,7 @@ if [ -d "$dir" ]; then
         echo "Uso de disco normal! ($usoporc%)"
     fi
 
-    quantiaProcessos=$(ps -ef -u $USER | wc -l)
+    quantiaProcessos=$(ps -ef -u $USER --noheaders | wc -l)
 
     echo "O usuário atual está rodando $quantiaProcessos processos."
     echo -e "\nProcessos que mais utilizam memória:\n"
